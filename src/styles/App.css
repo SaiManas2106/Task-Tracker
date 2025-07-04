@@ -1,0 +1,448 @@
+:root {
+  --bg: #f8f9fa;
+  --text: #222;
+  --card-bg: #fff;
+  --primary: #4f46e5;
+  --secondary: #e0e0e0;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #f5f5f5;
+  --card-bg: #1e1e1e;
+  --primary: #6366f1;
+  --secondary: #333;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Topbar styling */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.user-info span {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.user-info button {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.user-info button:hover {
+  background-color: #3730a3;
+}
+
+/* Toggle switch */
+.dark-toggle-switch {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--primary);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Login Form */
+.login-container {
+  max-width: 360px;
+  margin: 80px auto;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.login-container input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text);
+}
+
+.login-container button {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.login-container button:hover {
+  background-color: #3730a3;
+}
+
+/* Task form */
+.task-form {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  margin: 1rem auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 600px;
+}
+
+.task-form h3 {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  gap: 0.5rem;
+}
+
+.input-group span {
+  font-size: 1.2rem;
+}
+
+.input-group input,
+.input-group textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text);
+  resize: vertical;
+}
+
+body.dark .input-group {
+  background-color: #333;
+  border: 1px solid #555;
+}
+
+body.dark .input-group input,
+body.dark .input-group textarea {
+  color: #eee;
+}
+
+/* Task item */
+.task-item {
+  background-color: var(--card-bg);
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  max-width: 600px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.task-main {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.task-main input[type="checkbox"] {
+  margin-top: 5px;
+}
+
+.task-main div {
+  flex: 1;
+  word-break: break-word;
+}
+
+.task-item small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #777;
+}
+
+/* Buttons inside task items */
+.task-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.task-actions button {
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+}
+
+.task-actions button:hover {
+  background-color: #3730a3;
+}
+
+/* Task filter */
+.task-filter {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.task-filter button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.task-filter button.active,
+.task-filter button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Primary button style */
+.task-form button {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.task-form button:hover {
+  background-color: #3730a3;
+}
+
+.task-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.completed-title {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.task-desc {
+  color: var(--text);
+  opacity: 0.9;
+  white-space: pre-wrap;
+}
+
+/* Priority tag styles */
+.priority {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  margin-top: 0.4rem;
+  display: inline-block;
+}
+
+.priority.high {
+  background: #dc2626;
+  color: #fff;
+}
+
+.priority.medium {
+  background: #facc15;
+  color: #000;
+}
+
+.priority.low {
+  background: #4ade80;
+  color: #000;
+}
+
+/* Tags */
+.tags {
+  display: inline-block;
+  margin-left: 0.5rem;
+  background: #ddd;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade {
+  animation: fadeIn 0.3s ease;
+}
+
+.search-bar {
+  display: block;
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1.5px solid var(--primary);
+  border-radius: 8px;
+  background-color: var(--bg-light);
+  color: var(--text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 5px rgba(100, 100, 255, 0.4);
+}
+
+body.dark .search-bar {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+  border: 1.5px solid #444;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+.task-tags {
+  margin-top: 8px;
+}
+
+.tag-badge {
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #333;
+  font-size: 12px;
+  padding: 4px 10px;
+  margin: 3px 5px 0 0;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+body.dark .tag-badge {
+  background-color: #444;
+  color: #fff;
+}
+
+.tag-badge:hover {
+  background-color: #b0bec5;
+  cursor: default;
+}
+
+.tag-badge.clickable {
+  cursor: pointer;
+}
+
+.tag-badge.clickable:hover {
+  background-color: #9fa8da;
+}
