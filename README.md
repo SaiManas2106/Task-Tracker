@@ -67,7 +67,7 @@ task-tracker/
 
 | Login Screen | Task Dashboard |
 |--------------|----------------|
-| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) |
+| ![Login](screenshots/Login.png) | ![Dashboard](screenshots/dashboard.png) |
 
 ## ✨ Future Scope
 
