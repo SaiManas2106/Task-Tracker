@@ -434,6 +434,7 @@ body.dark .tag-badge {
   color: #fff;
 }
 
+
 .tag-badge:hover {
   background-color: #b0bec5;
   cursor: default;
