@@ -447,3 +447,18 @@ body.dark .tag-badge {
 .tag-badge.clickable:hover {
   background-color: #9fa8da;
 }
+
+.tag-chip {
+  background: #eee;
+  padding: 4px 8px;
+  border-radius: 12px;
+  margin: 2px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: inline-block;
+  transition: background 0.3s;
+}
+
+.tag-chip:hover {
+  background: #ccc;
+}

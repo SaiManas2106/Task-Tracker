@@ -8,15 +8,14 @@ import './styles/App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function App() {
   const [user, setUser] = useState(localStorage.getItem('username'));
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('all');
   const [editTask, setEditTask] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [tagFilter, setTagFilter] = useState(null); // NEW
 
-  // Load tasks for the logged-in user
   useEffect(() => {
     if (user) {
       const userTasks = getTasks(user);
@@ -24,7 +23,6 @@ function App() {
     }
   }, [user]);
 
-  // Save tasks whenever tasks or user changes
   useEffect(() => {
     if (user) {
       saveTasks(user, tasks);
@@ -65,7 +63,15 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem('username');
     setUser(null);
-    setTasks([]); // clear tasks on logout
+    setTasks([]);
+  };
+
+  const handleTagClick = (tag) => {
+    setTagFilter(tag); // ✅ Filter tasks by tag
+  };
+
+  const clearTagFilter = () => {
+    setTagFilter(null); // ✅ Clear tag filter
   };
 
   const filteredTasks = tasks.filter((task) => {
@@ -74,7 +80,8 @@ function App() {
     const matchesSearch =
       task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (task.description && task.description.toLowerCase().includes(searchTerm.toLowerCase()));
-    return matchesFilter && matchesSearch;
+    const matchesTag = tagFilter ? task.tags?.includes(tagFilter) : true;
+    return matchesFilter && matchesSearch && matchesTag;
   });
 
   const counts = {
@@ -85,10 +92,6 @@ function App() {
 
   const toggleDarkMode = () => {
     document.body.classList.toggle('dark');
-  };
-
-  const handleTagClick = (tag) => {
-    setSearchTerm(tag); // set search bar to tag when clicked
   };
 
   return (
@@ -116,6 +119,13 @@ function App() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+
+          {tagFilter && (
+            <div className="tag-filter-indicator">
+              <span>Filtering by tag: <strong>{tagFilter}</strong></span>
+              <button onClick={clearTagFilter}>Clear</button>
+            </div>
+          )}
 
           <TaskForm onSubmit={handleAddOrUpdateTask} editTask={editTask} />
           <TaskFilter filter={filter} setFilter={setFilter} counts={counts} />
